@@ -1,10 +1,12 @@
 # Contact-Process
 
-The Contact process is a general stochastic model for spatial spread. It works in discrete space (sites), discrete state (vacant/occupied), and continuos time (rates of colonization/birth and extinction/death).
+The Contact process is a general stochastic model for spatial spread. Applications include bacterial colonies, human cities, tumor grwoth, etc.
+It works in discrete space (sites), discrete state (vacant/occupied), and continuos time (rates of colonization/birth and extinction/death).
 
 The lattice can be seen as a population of replicating particles/sites which can die (go extinct locally) and/or, through birth process, colonize near-by vacant locations. It is a model which allows to study the implications adjacency (access, spatial structure) has in the long-term structure of birth-death process.
 
-SPACE:
+
+SPACE IMPLEMENTATION (a Lattice):
 
 We conside a 2D lattice (periodic boundary conditions; a torus) representing spatial locations which can be either vacant (state 0) or occupied (state 1). Latiice sites on these states can locally go exting (die at some rate/with some probability) or, if empty, be colonized by adjacent occupied sited with a probability proportional to the local occupancy.
 
@@ -21,23 +23,9 @@ doi:
 https://doi.org/10.1098/rstb.1994.0028
 
 
-TO COMPILE:
+CODE (C language):
 
-  We use the Make utility. So, just enter the directory and type make. The makefile is ultra simple for now and it just invocate the compile lines:
-
-    gcc contact.c mt64.c -lm -o contact `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`
-    gcc contact_2.c mt64.c -lm -o contact_2 `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`
-
-respectively (contact, contact_2).
-
-
-TARGET PROGRAMS:
-
-  The idea is to generate two programs. one (contact) which will do the basics (so it runs in small systems) and another (contact_2) which will have      increasing functionality.
-
-CODE:
-
-  As up today, these two TARGETs are implemented as two different directories (contac_process & contact_process_plus). This produces redundancy, but  also encapsulates simplicity.
+  As up today, these two TARGETs are implemented as two different directories (contac_process & contact_process_plus) containing C code. This produces redundancy (almost all files are repeated on the 2 directories), but  also encapsulates simplicity. The + version has some extra initial conditions choice to start the simulation.
 
 
 DEPENDENCIES:
@@ -56,7 +44,22 @@ DEPENDENCIES:
     https://github.com/shivakar/rng-reference/blob/master/MT19937/mt64.h
 
 
----[gtk]
+---[gtk 3]
   For the GUI we use Gtk version 3. The plan for the near future is to move to gtk-4 and follow the Gnome app vision.
 
     https://docs.gtk.org/gtk3/
+    
+    
+TO COMPILE:
+
+  We use the Make utility. So, just enter the directory and type make. The makefile is ultra simple for now and it just invocate the compile lines:
+
+    gcc contact.c mt64.c -lm -o contact `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`
+    gcc contact_2.c mt64.c -lm -o contact_2 `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`
+
+respectively (contact, contact_2).
+
+
+TARGET PROGRAMS:
+
+  The idea is to generate two programs. one (contact) which will do the basics (so it runs in small systems) and another (contact_2) which will have      increasing functionality.

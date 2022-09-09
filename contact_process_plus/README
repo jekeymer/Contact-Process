@@ -1,0 +1,9 @@
+New version v.0.2 of contact process app.
+
+We added init options.
+
+To see add ons respect to version v.0.1 use:
+
+diff -p contact_2.c ../Contact_process/contact.c | less
+
+

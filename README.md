@@ -15,7 +15,18 @@ doi:
 https://doi.org/10.1098/rstb.1994.0028
 
 
+TO COMPILE:
 
+We use the Make utility. So, just enter the directory and type make. The makefile is ultra simple for now and it just invocate the compile line:
+
+
+TARGET PROGRAMS:
+
+The idea is to generate two programs. one (contact) which will do the basics (so it runs in small systems) and another (contact_2) which will have increasing functionality.
+
+CODE:
+
+As up today, these two TARGETs are implemented as two different directories (contac_process & contact_process_plus). This produces redundancy, but also encapsulates simplicity.
 
 
 DEPENDENCIES:

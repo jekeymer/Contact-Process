@@ -84,6 +84,6 @@ TO COMPILE:
 TESTED PLATFORMS:
 
 The code has been compiled successfully on: 
-                                            Ubuntu
-                                            Raspian 
+                                            Ubuntu,
+                                            Raspian. 
   

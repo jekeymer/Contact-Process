@@ -53,13 +53,18 @@ DEPENDENCIES:
 
     https://github.com/shivakar/rng-reference/blob/master/MT19937/mt64.h
 
-
- 2.- [gtk 3]     
+ 2.- [time.h]
+  The <time.h> library is used to provide a seed to the RNG 
+ 
+ 3.- [math.h]
+  Math support for some formulare is provided by the <math.h> library.
+ 
+ 4.- [gtk-3]     
   For the GUI Toolkit (Widgets) we use Gtk version 3.
 
     https://docs.gtk.org/gtk3/
     
-  The plan for the near future is to move to Gtk 4 and follow the Gnome app vision:
+  The plan for the near future is to move to gtk-4 and follow the Gnome vision of application development.
   
     https://www.gtk.org/
     
@@ -70,13 +75,11 @@ TO COMPILE:
   
     make 
     
- The makefile is ultra simple for now and it just invocate the compile lines:
+ The makefile is ultra simple for now and it just invocate the following compile lines respectively (contact, contact_2):
 
     gcc contact.c mt64.c -lm -o contact `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`
     gcc contact_2.c mt64.c -lm -o contact_2 `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`
-
-respectively (contact, contact_2).
-  
+ 
 
 TESTED PLATFORMS:
 

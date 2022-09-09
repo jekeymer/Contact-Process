@@ -3,12 +3,12 @@
 The Contact process is a general stochastic model for spatial spread. Applications include bacterial colonies, human cities, tumor grwoth, etc.
 It works in discrete space (sites), discrete state (vacant/occupied), and continuos time (rates of colonization/birth and extinction/death).
 
-The lattice can be seen as a population of replicating particles/sites which can die (go extinct locally) and/or, through birth process, colonize near-by vacant locations. It is a model which allows to study the implications adjacency (access, spatial structure) has in the long-term structure of birth-death process.
+The lattice can be seen as a population of replicating particles/sites which can die (go extinct locally) and/or, through birth process, colonize near-by vacant locations. It is a model which allows us to study the implications adjacency relationships (access, spatial structure) have in determining the long-term structure of birth-death process.
 
 
 SPACE IMPLEMENTATION (a Lattice):
 
-We conside a 2D lattice (periodic boundary conditions; a torus) representing spatial locations which can be either vacant (state 0) or occupied (state 1). Latiice sites on these states can locally go exting (die at some rate/with some probability) or, if empty, be colonized by adjacent occupied sited with a probability proportional to the local occupancy.
+We conside a 2D lattice (periodic boundary conditions; a torus) representing sp atial locations which can be either vacant (state 0) or occupied (state 1). Latiice sites which are occupied can locally go exting (die at some rate/with some probability) and turn vacant or, if a;ready empty, be colonized by adjacent occupied sited with a probability proportional to the local occupancy.
 
 For a mathematical description of the process
 

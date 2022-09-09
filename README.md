@@ -35,3 +35,5 @@ https://github.com/shivakar/rng-reference/blob/master/MT19937/mt64.h
 
 ---[gtk]
 For the GUI we use Gtk version 3. The plan for the near future is to move to gtk-4 and follow the Gnome app vision.
+
+https://docs.gtk.org/gtk3/

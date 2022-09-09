@@ -1,7 +1,8 @@
 # Contact-Process
 
-The Contact process is a general stochastic model for the spatial spread
-It consist of a lattice population of replicating particles/sites which can die (go extinct locally) and/or, through birth process, colonize near-by vacant locations.
+The Contact process is a general stochastic model for spatial spread. It works in discrete space (sites), discrete state (vacant/occupied), and continuos time (rates of colonization/birth and extinction/death).
+
+The lattice can be seen as a population of replicating particles/sites which can die (go extinct locally) and/or, through birth process, colonize near-by vacant locations. It is a model which allows to study the implications adjacency (access, spatial structure) has in the long-term structure of birth-death process.
 
 SPACE:
 

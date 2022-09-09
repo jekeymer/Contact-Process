@@ -57,7 +57,7 @@ DEPENDENCIES:
   The <time.h> library is used to provide a seed to the RNG 
  
  3.- [math.h]
-  Math support for some formulare is provided by the <math.h> library.
+  Math support for some formulae is provided by the <math.h> library.
  
  4.- [gtk-3]     
   For the GUI Toolkit (Widgets) we use Gtk version 3.

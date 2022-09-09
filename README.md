@@ -17,7 +17,12 @@ For a mathematical description of the process
 
   https://en.wikipedia.org/wiki/Contact_process_(mathematics)
 
-For a guide on the mathematical model for ecological applications, see: Durrett and Levin, 1998
+For a guide on the mathematical model for ecological applications, see: 
+
+"Stochastic Spatial Models: A User's Guide to Ecological Applications"
+ by Durrett and Levin, 1998. 
+ 
+published @:
 
   https://royalsocietypublishing.org/doi/10.1098/rstb.1994.0028
 

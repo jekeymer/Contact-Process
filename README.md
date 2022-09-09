@@ -13,20 +13,20 @@ SPATIAL STRUCTURE OF THE MODEL (a Lattice):
 
 We conside a 2D lattice (periodic boundary conditions; a torus) representing sp atial locations which can be either vacant (state 0) or occupied (state 1). Latiice sites which are occupied can locally go exting (die at some rate/with some probability) and turn vacant or, if a;ready empty, be colonized by adjacent occupied sited with a probability proportional to the local occupancy.
 
-For a mathematical description of the process
+For a mathematical description of the stochastic process
 
   https://en.wikipedia.org/wiki/Contact_process_(mathematics)
 
-For a guide on the mathematical model for ecological applications, see: 
+For a general overview of the mathematical model, see: 
 
-"Stochastic Spatial Models: A User's Guide to Ecological Applications"
+ "Stochastic Spatial Models: A User's Guide to Ecological Applications"
  by Durrett and Levin, 1998. 
  
-published @:
+  published @:
 
   https://royalsocietypublishing.org/doi/10.1098/rstb.1994.0028
 
-doi:
+  doi:
 
   https://doi.org/10.1098/rstb.1994.0028
 

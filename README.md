@@ -48,7 +48,7 @@ DEPENDENCIES:
 1.- [mt64.h]
   Pseudo Random Number Generation (RNG) is achieved using the Mersenne twister algorithm.
 
-    https://es.wikipedia.org/wiki/Mersenne_twister
+    https://en.wikipedia.org/wiki/Mersenne_twister
 
   The implementation is thanks to the MT19937 algorithm, which for 64 bits, is implemented in the following repository:
 

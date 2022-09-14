@@ -31,8 +31,8 @@ static void paint_a_background (gpointer data)
 	p = gdk_pixbuf_new(GDK_COLORSPACE_RGB, 0, 8, X_SIZE, Y_SIZE);	
 	/*Paint a background canvas for start up image*/
   	int x,y;
-	for (x = 0; x <256; x++)
-	      for (y = 0; y < 256; y++)
+	for (x = 0; x < X_SIZE; x++)
+	      for (y = 0; y < Y_SIZE; y++)
 			put_pixel(p, (int)x, (int)y, (guchar)x, (guchar)y, (guchar)x+y, 255);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(data), GDK_PIXBUF(p));
 	g_object_unref(p);
@@ -47,10 +47,10 @@ static void paint_lattice (gpointer data)
 	int x,y;
 	for (x = 0; x < X_SIZE; x++)
 		for (y = 0; y < Y_SIZE; y++)
-			if(s.lattice_configuration[x][y]==0) 
+			if(s.lattice_configuration[x][y]==0)
 				// VACANCY is painted WHITE
 				{put_pixel(p, (int)x, (int)y, (guchar)255, (guchar)255, (guchar)255, 255);
-				}else{ 
+				}else{
 				// OCCUPANCY is painted BLACK
 			 	put_pixel(p, (int)x, (int)y, (guchar)0, (guchar)0, (guchar)0, 255);
 				}
@@ -65,7 +65,7 @@ int update_lattice(gpointer data)
 	long random_neighboor;
 	int x,y;
 	int sites = 0;
-	int random_x_coor, random_y_coor;	
+	int random_x_coor, random_y_coor;
 	for (sites; sites < (int)(Y_SIZE*X_SIZE); sites++)
 		{
 		//pick a random focal site
@@ -204,7 +204,7 @@ static void show_about(GtkWidget *widget, gpointer data)
 	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), 
      "The Contact process, a stochastic process, is a model of spatial competition. Particles die and spread in a 2D lattice");
 	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), 
-     "http://keymerlab.nl");
+     "https://github.com/jekeymer/Contact-Process/wiki");
 	gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(dialog), pixbuf);
 	g_object_unref(pixbuf), pixbuf = NULL;		
 	gtk_dialog_run(GTK_DIALOG (dialog));
@@ -244,7 +244,7 @@ static void radio_button_toggled(GtkWidget *button, gpointer   user_data)
 static void activate (GtkApplication *app, gpointer user_data)
 	{	
 	// declare a bunch of Gtk WIDGETS for the GUI
-	GtkWidget *window,*grid, *button, *logo_kimero_lab, *image_lattice, *radio_button;
+	GtkWidget *window,*grid, *button, *separator, *image_lattice, *radio_button;
 	// to draw into the window images
 	GdkPixbuf *pixbuf;
 	
@@ -284,9 +284,9 @@ static void activate (GtkApplication *app, gpointer user_data)
 	paint_a_background(image_lattice);
 	gtk_grid_attach (GTK_GRID (grid), image_lattice, 0, 1, 5, 1); // position (0,1) spanning 5 col and 1 raw) 
 	
-	// Keymer LAB LOGO
-	logo_kimero_lab = gtk_image_new_from_file ("kimero_LAB_transparent.tiff");
-	gtk_grid_attach (GTK_GRID (grid), logo_kimero_lab, 0, 2, 5, 1); // position (0,2) spanning 5 col and 1 raw)
+	// Separator
+	separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+	gtk_grid_attach (GTK_GRID (grid), separator, 0, 2, 5, 1); // position (0,2) spanning 5 col and 1 raw)
 	
 	// Initial condition choices
 	// option 1
@@ -338,7 +338,7 @@ int main (int    argc, char **argv)
 	{
 	GtkApplication *app;
 	int status;
-	app = gtk_application_new ("keymer.lab.contact_process", G_APPLICATION_FLAGS_NONE);
+	app = gtk_application_new ("keymer.lab.contact_process_plus", G_APPLICATION_FLAGS_NONE);
 	g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
 	status = g_application_run (G_APPLICATION (app), argc, argv);
 	g_object_unref (app);

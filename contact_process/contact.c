@@ -30,8 +30,8 @@ static void paint_a_background (gpointer data)
 	p = gdk_pixbuf_new(GDK_COLORSPACE_RGB, 0, 8, X_SIZE, Y_SIZE);	
 	/*Paint a background canvas for start up image*/
   	int x,y;
-	for (x = 0; x <256; x++)
-	      for (y = 0; y < 256; y++)
+	for (x = 0; x < X_SIZE; x++)
+	      for (y = 0; y < Y_SIZE; y++)
 			put_pixel(p, (int)x, (int)y, (guchar)x, (guchar)y, (guchar)x+y, 255);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(data), GDK_PIXBUF(p));
 	g_object_unref(p);
@@ -171,35 +171,35 @@ static void mortality_scale_moved (GtkRange *range, gpointer  user_data)
 	}
 
 // HERE GOES THE ABOUT DIALOG BOX For info at a website: lab wiki on the contact process
-static void show_about(GtkWidget *widget, gpointer data) 
+static void show_about(GtkWidget *widget, gpointer data)
 	{
 	GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file("kimero_LAB_transparent.tiff", NULL);
-	GtkWidget *dialog = gtk_about_dialog_new(); 
+	GtkWidget *dialog = gtk_about_dialog_new();
 	gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG(dialog),
-                                    "Contact Process App");	
-	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), "v 0.1, 2017"); 
+                                    "Contact Process App");
+	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), "v 0.1, 2017");
 	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog),"Open Source Code");
-	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), 
+	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog),
      "The Contact process, a stochastic process, is a model of spatial competition. Particles die and spread in a 2D lattice");
-	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), 
-     "http://keymerlab.nl");
+	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog),
+     "https://github.com/jekeymer/Contact-Process/wiki");
 	gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(dialog), pixbuf);
-	g_object_unref(pixbuf), pixbuf = NULL;		
+	g_object_unref(pixbuf), pixbuf = NULL;
 	gtk_dialog_run(GTK_DIALOG (dialog));
 	gtk_widget_destroy(dialog);
 	}
 
 // ACTIVATE function with all Widget Initialization and creation
 static void activate (GtkApplication *app, gpointer user_data)
-	{	
+	{
 	// declare a bunch of Gtk WIDGETS for the GUI
-	GtkWidget *window,*grid, *button, *logo_kimero_lab, *image_lattice;
+	GtkWidget *window,*grid, *button, *separator, *image_lattice;
 	// to draw into the window images
 	GdkPixbuf *pixbuf;
-	
+
 	// to control the parameter of the process
 	GtkWidget *mortality_scale, *mortality_label;
-	
+
 	// we initialize the mt algorithm for random number genration
 	unsigned long long seed = (unsigned int)time(NULL);
 	init_genrand64(seed);
@@ -225,17 +225,17 @@ static void activate (GtkApplication *app, gpointer user_data)
 	g_signal_connect (mortality_scale,"value-changed", G_CALLBACK (mortality_scale_moved), mortality_label);
 	gtk_grid_attach (GTK_GRID (grid), mortality_scale, 0, 0, 2, 1); // position (0,0) spanning 2 col and 1 raw
 	gtk_grid_attach (GTK_GRID (grid), mortality_label, 2, 0, 3, 1); // position (2,0) spanning 3 col and 1 raw 
-	
+
 	// PIXEL BUFFER @ START UP and LATTICE CONFIGURATION DISPLAY IMAGE
 	pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, 0, 8, X_SIZE, Y_SIZE);
 	image_lattice = gtk_image_new_from_pixbuf(pixbuf);
 	paint_a_background(image_lattice);
 	gtk_grid_attach (GTK_GRID (grid), image_lattice, 0, 1, 5, 1); // position (0,1) spanning 5 col and 1 raw) 
-	
-	// Keymer LAB LOGO
-	logo_kimero_lab = gtk_image_new_from_file ("kimero_LAB_transparent.tiff");
-	gtk_grid_attach (GTK_GRID (grid), logo_kimero_lab, 0, 2, 5, 1); // position (0,2) spanning 5 col and 1 raw)
-	
+
+	// Separator
+	separator = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+	gtk_grid_attach (GTK_GRID (grid), separator, 0, 2, 5, 1); // position (0,2) spanning 5 col and 1 raw)
+
 	// -----    INIT BUTTON   -----
 	button = gtk_button_new_with_label ("Initialize");
 	g_signal_connect (button, "clicked", G_CALLBACK (init_lattice), GTK_IMAGE(image_lattice)); 
